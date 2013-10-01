@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Javascript Demo</title>
+	<script type="text/javascript" src="mylib.js"></script>
+</head>
+<body>
+	<div id="canvas"></div>
+
+	<script>
+
+		//create a field with 100 circles
+		var field = new Field(10);
+		console.log(field);
+
+		
+		document.oncopy = function(){
+			alert('hi');
+		}
+
+		console.log(document);
+
+
+		//draw the circles in the canvas id
+		field.draw_circles("canvas");
+
+		//callback function to have an invisible circle where the mouse is
+		document.onmousemove = function(e){
+			console.log(e);
+		    field.SetCursor(e.clientX, e.clientY, 500);
+		}
+
+		//have calculateAccelerationAndMove method every 2ms
+		setInterval("field.calculateAccelerationAndMove()", 2);
+		
+	</script>
+
+</body>
+</html>
